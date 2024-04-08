@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h1>Add New Post</h1>
-        <form action="backend/BlogController.php" method="POST">
+        <form action="./backend/BlogController.php" method="POST">
             <input type="text" name="title" placeholder="Enter post title">
             <textarea name="content" placeholder="Enter post content"></textarea>
             <button type="submit" name="add_post">Add Post</button>
