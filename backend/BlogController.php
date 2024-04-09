@@ -21,18 +21,18 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST' && isset($_POST["add_post"])) {
     $title = $_POST["title"];
     $content = $_POST["content"];
     $post = new Post($title, $content);
-    $_SESSION["posts"][] = $post;
+    array_unshift($_SESSION["posts"], $post);
     header("Location: ../");
     exit();
 }
-
-// Sort posts array (descending order), according to key
-    krsort($_SESSION["posts"]);
 
 // Delete a post if requested
 if (isset($_GET['delete']) && isset($_SESSION['posts'][$_GET['delete']])) {
     unset($_SESSION['posts'][$_GET['delete']]);
 }
+
+// session_unset();
+// session_destroy();
 
 // Display posts
 foreach ($_SESSION["posts"] as $key => $post) {
