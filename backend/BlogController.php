@@ -1,7 +1,15 @@
 <?php
 session_start();
 
-include_once 'Post.php';
+class Post {
+  public $title;
+  public $content;
+
+  function __construct($title, $content) {
+    $this->title = $title; 
+    $this->content = $content; 
+  }
+}
 
 // Initialize posts array if not already set
 if (!isset($_SESSION['posts'])) {
@@ -18,8 +26,16 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST' && isset($_POST["add_post"])) {
     exit();
 }
 
-// Display posts
-foreach ($_SESSION["posts"] as $post) {
-    echo "<li><h3>{$post->title}</h3><p>{$post->content}</p></li>";
+// Sort posts array (descending order), according to key
+    krsort($_SESSION["posts"]);
+
+// Delete a post if requested
+if (isset($_GET['delete']) && isset($_SESSION['posts'][$_GET['delete']])) {
+    unset($_SESSION['posts'][$_GET['delete']]);
 }
-?>
+
+// Display posts
+foreach ($_SESSION["posts"] as $key => $post) {
+    echo "<li><h3>{$post->title}</h3><p>{$post->content}</p></li> <br>";
+    echo "<a href=\"index.php?edited=$key\">[Edit]</a><a href=\"index.php?delete=$key\">[Delete]</a> <hr>";
+}
