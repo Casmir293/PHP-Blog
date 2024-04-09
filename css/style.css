@@ -13,7 +13,7 @@ textarea {
 
 button {
     padding: 10px 20px;
-    background-color: red;
+    background-color: #4CAF50;
     color: white;
     border: none;
     cursor: pointer;
@@ -30,4 +30,23 @@ ul {
 
 ul li {
     margin-bottom: 20px;
+}
+
+.edited {
+    margin-right: 15px;
+    color: gray;
+    font-size: smaller;
+}
+
+.add-post {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.add-post:hover {
+    background-color: #45a049;
 }

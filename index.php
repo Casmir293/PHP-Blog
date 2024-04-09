@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <h1>Simple Blog</h1>
-        <a href="AddPost.php">Add New Post</a>
+        <a class="add-post" href="AddPost.php">Add New Post</a>
         <h2>Recent Posts</h2>
         <ul>
             <?php include_once './backend/BlogController.php'; ?>
